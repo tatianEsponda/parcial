@@ -30,13 +30,13 @@
             android:inputType="textPersonName" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/butingre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Ingresar" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/butregis"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Registrar" />
