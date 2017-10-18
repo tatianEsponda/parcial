@@ -51,7 +51,7 @@ public class ActivityRegistro extends AppCompatActivity {
         String ema=email.getText().toString().trim();
         String contra=contr.getText().toString().trim();
         Usuario usu = new Usuario(id,nom,ap,ema,ban,contra);
-        if(id.matches("146")||nom.matches("")||ap.matches("")||ema.matches("")||contra.matches("")){
+        if(id.matches("")||nom.matches("")||ap.matches("")||ema.matches("")||contra.matches("")){
             Toast.makeText(this,"Todos los campos son obligatorios",Toast.LENGTH_LONG).show();
         }else{
             myRef.child("Usuario").child(id).setValue(usu);

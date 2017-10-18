@@ -14,7 +14,7 @@
         tools:layout_editor_absoluteY="8dp">
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/txtNom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -22,7 +22,7 @@
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/txtContraseña"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -39,7 +39,7 @@
             android:id="@+id/butregis"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Registrarrr" />
+            android:text="Registrar" />
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
