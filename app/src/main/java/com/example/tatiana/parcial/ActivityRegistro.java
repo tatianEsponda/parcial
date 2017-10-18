@@ -59,4 +59,10 @@ public class ActivityRegistro extends AppCompatActivity {
 
 
     }
+
+    public void LeerFirebase(View g){
+
+
+
+    }
 }
