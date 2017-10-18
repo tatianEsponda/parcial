@@ -7,8 +7,13 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.Map;
 
 public class ActivityRegistro extends AppCompatActivity {
     RadioButton si,no;
@@ -62,6 +67,21 @@ public class ActivityRegistro extends AppCompatActivity {
 
     public void LeerFirebase(View g){
 
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Map<String,Object> value =(Map<String,Object>) dataSnapshot.getValue();
+                Ident.setText(value.size()+" "+value.containsKey("chats"));
+                Ident.append("  "+value.values());
+
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                Ident.setText(""+error.toException());
+            }
+        });
 
 
     }
