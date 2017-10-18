@@ -16,8 +16,31 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0.91"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="8dp">
+
+            <TextView
+                android:id="@+id/identex"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Identificacion"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/Textiden"
+                android:layout_width="199dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
             android:orientation="horizontal"
             android:weightSum="1"
             tools:layout_editor_absoluteX="8dp"
@@ -30,6 +53,7 @@
                 android:layout_weight="1"
                 android:text="Nombre"
                 android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textSize="18sp"
                 tools:layout_editor_absoluteX="-344dp"
                 tools:layout_editor_absoluteY="213dp" />
 
@@ -46,8 +70,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0.91"
+            android:layout_height="58dp"
             android:orientation="horizontal"
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="118dp">
@@ -58,7 +81,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.91"
                 android:text="Apellido"
-                android:textAppearance="@style/TextAppearance.AppCompat" />
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textSize="18sp" />
 
             <EditText
                 android:id="@+id/TextApellido"
@@ -69,10 +93,9 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/text3"
+            android:id="@+id/LinearLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="0.91"
+            android:layout_height="59dp"
             android:orientation="horizontal"
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="55dp">
@@ -82,11 +105,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.91"
-                android:text="Direccion"
-                android:textAppearance="@style/TextAppearance.AppCompat" />
+                android:text="E-mail"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/TextDireccion"
+                android:id="@+id/TextEmail"
                 android:layout_width="198dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -107,21 +131,28 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.91"
                 android:text="¿Administrador?"
-                android:textAppearance="@style/TextAppearance.AppCompat" />
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textSize="18sp" />
 
-            <RadioButton
-                android:id="@+id/RadioSi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.20"
-                android:text="Si" />
+            <RadioGroup
+                android:layout_width="200dp"
+                android:layout_height="wrap_content">
 
-            <RadioButton
-                android:id="@+id/RadioNo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.18"
-                android:text="No" />
+                <RadioButton
+                    android:id="@+id/RadioNo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:text="No" />
+
+                <RadioButton
+                    android:id="@+id/RadioSi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Si" />
+            </RadioGroup>
 
         </LinearLayout>
 
@@ -139,14 +170,16 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Contraseña"
-                android:textAppearance="@style/TextAppearance.AppCompat" />
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:textSize="18sp" />
 
             <EditText
-                android:id="@+id/TextContraseña"
-                android:layout_width="198dp"
+                android:id="@+id/Textcontra"
+                android:layout_width="203dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:inputType="textPassword" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -162,6 +195,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.18"
+                android:onClick="Ingresar"
                 android:text="Registrar" />
 
             <Button
