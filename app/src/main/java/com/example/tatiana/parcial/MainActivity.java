@@ -8,8 +8,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
     Button btnRegistrar,btnIngresar;
@@ -17,39 +20,76 @@ public class MainActivity extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();//obtengo una instancia luego de conectarse a firebase
     //para leer y escribir en la base de datos, necesitas una instancia de Database
     DatabaseReference myRef = database.getReference();
-    EditText nomUsuario, contraseña;
+    EditText identi, contraseña;
 
-
+    String Ide,contr,contrBD="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        nomUsuario = (EditText) findViewById(R.id.txtNom);
-        contraseña = (EditText) findViewById(R.id.txtContraseña);
+        identi = (EditText) findViewById(R.id.txIden);// obtenemos la identificacion para compararla con la BD
+        contraseña = (EditText) findViewById(R.id.txtContraseña); // obtenemos la contraseña para compararla con la BD
         btnRegistrar = (Button) findViewById(R.id.butregis);
         btnIngresar=(Button) findViewById(R.id.butingre);
+
+
 
 
         btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(MainActivity.this, ActivityRegistro.class);
                 startActivity(intent);
             }
         });
 
-        btnIngresar.setOnClickListener(new View.OnClickListener() {
+      /* btnIngresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent inte = new Intent(MainActivity.this,ActivityLista.class);
                 startActivity(inte);
             }
-        });
+        });*/
     }
 
-    public void Excribir(View b) {
+
+    public void Verificar(View b){
+        Ide = identi.getText().toString().trim();// lo que hay en el campo texto  identi lo guardamos en un string Ide
+        contr=contraseña.getText().toString().trim();//lo que hay en  el compo texto contraseña lo guardamos en string contr
+        FirebaseDatabase data = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = data.getReference("Usuario").child(Ide);// vamos la USUARIO  y a la identificacion ingresada
+       myRef.addValueEventListener(new ValueEventListener() {
+           @Override
+           public void onDataChange(DataSnapshot dataSnapshot) {
+                contrBD = dataSnapshot.child("Contraseña").getValue().toString();/*una vez estamos dentro de los atributos del usuario con la identificacion
+                                                                                        ingresada nos vamos al atributo Contraseña y la guardamos en contrBD para luego
+                                                                                        compararla con la que se ingreso que seta en Ide*/
+
+
+
+
+           }
+
+           @Override
+           public void onCancelled(DatabaseError error) {
+               identi.setText(""+error.toException());
+           }
+       });
+        if (contr.equalsIgnoreCase(contrBD)){   // no he podido comparar estos dos String para asi ir a LISTAR
+            Toast.makeText(this, "Si es igual", Toast.LENGTH_LONG).show();
+            Intent inte = new Intent(MainActivity.this,ActivityLista.class);    //si quieren probar LISTAR entonces corten y peguen  estas dos lineas
+            startActivity(inte);                                                // en el else
+        }else{
+            Toast.makeText(this, "Identificacion o contraseña incorrecta", Toast.LENGTH_LONG).show();
+
+        }
+
+    }
+
+   /* public void Excribir(View b) {
         // Write a message to the database
-        String nom = nomUsuario.getText().toString().trim();// trae lo que hay en nombre edinomb
+        String nom = identi.getText().toString().trim();// trae lo que hay en nombre edinomb
         String con = contraseña.getText().toString().trim();
 
         if (nom.matches("") || con.matches("")) {
@@ -61,5 +101,5 @@ public class MainActivity extends AppCompatActivity {
             //   myRef.child("Usuario").setValue(valor);
 
         }
-    }
+    }*/
 }

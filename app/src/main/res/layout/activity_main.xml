@@ -14,11 +14,11 @@
         tools:layout_editor_absoluteY="8dp">
 
         <EditText
-            android:id="@+id/txtNom"
+            android:id="@+id/txIden"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Usuario"
+            android:hint="IDentificacion"
             android:inputType="textPersonName" />
 
         <EditText
@@ -33,6 +33,7 @@
             android:id="@+id/butingre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="Verificar"
             android:text="Ingresar" />
 
         <Button

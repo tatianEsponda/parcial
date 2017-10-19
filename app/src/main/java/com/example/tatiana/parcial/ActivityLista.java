@@ -28,13 +28,13 @@ public class ActivityLista extends AppCompatActivity {
 
 
     public void leer(View b){
-       String dato= iden.getText().toString().trim();  // lo que tenemos iden lo guardamos en dato es decir la identificacino
+       String dato= iden.getText().toString().trim();  // lo que tenemos en  iden lo guardamos en dato es decir la identificacino
         FirebaseDatabase data =FirebaseDatabase.getInstance();
-        DatabaseReference myRef=data.getReference("Usuario").child(dato); // Me voy a la referencia  usuario y la identificacion que  ponemos
+        DatabaseReference myRef=data.getReference("Usuario").child(dato); //-Nos vamos a la referencia  usuario y la identificacion que  ingresamos
 
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(DataSnapshot dataSnapshot) { // con ondata se muestra el resultado en casa de que es haga un cambio el automatimante nos lo envia modificado
              Nomb.setText(dataSnapshot.child("Nombre").getValue().toString()); // en el texto nombre agregamos lo que haya en nombre de la identificacion ingresada
              ape.setText(dataSnapshot.child("Apellido").getValue().toString());// igual pero con el apellido
 
@@ -43,7 +43,7 @@ public class ActivityLista extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError error) {
                 Nomb.setText(""+error.toException());
-            }
+            }// en caso de  que haya un error  se muestra en el campo nombre
         });
     }
 
