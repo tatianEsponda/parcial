@@ -12,7 +12,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
-    Button btnRegistrar;
+    Button btnRegistrar,btnIngresar;
+
     FirebaseDatabase database = FirebaseDatabase.getInstance();//obtengo una instancia luego de conectarse a firebase
     //para leer y escribir en la base de datos, necesitas una instancia de Database
     DatabaseReference myRef = database.getReference();
@@ -26,11 +27,22 @@ public class MainActivity extends AppCompatActivity {
         nomUsuario = (EditText) findViewById(R.id.txtNom);
         contraseña = (EditText) findViewById(R.id.txtContraseña);
         btnRegistrar = (Button) findViewById(R.id.butregis);
+        btnIngresar=(Button) findViewById(R.id.butingre);
+
+
         btnRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, ActivityRegistro.class);
                 startActivity(intent);
+            }
+        });
+
+        btnIngresar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent inte = new Intent(MainActivity.this,ActivityLista.class);
+                startActivity(inte);
             }
         });
     }
