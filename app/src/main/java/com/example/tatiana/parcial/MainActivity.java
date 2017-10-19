@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     DatabaseReference myRef = database.getReference();
     EditText identi, contraseña;
 
-    String Ide,contr,contrBD,tipo=" ";
+    String Ide,contr,contrBD="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,10 +63,9 @@ public class MainActivity extends AppCompatActivity {
            @Override
            public void onDataChange(DataSnapshot dataSnapshot) {
                 contrBD = dataSnapshot.child("Contraseña").getValue().toString();/*una vez estamos dentro de los atributos del usuario con la identificacion
-                                                                                     ingresada nos vamos al atributo Contraseña y la guardamos en contrBD para luego
+                                                                                        ingresada nos vamos al atributo Contraseña y la guardamos en contrBD para luego
                                                                                         compararla con la que se ingreso que seta en Ide*/
 
-               // tipo=dataSnapshot.child("Tipo").getValue().toString();
            }
 
            @Override
@@ -74,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
                identi.setText(""+error.toException());
            }
        });
-        if (contr.matches(contrBD) && tipo.matches("Administrador")){
+        if (contr.matches(contrBD)){
             Toast.makeText(this, "Si es igual", Toast.LENGTH_LONG).show();
             Intent inte = new Intent(MainActivity.this,ActivityLista.class);    // llamo a la activity  lista
             startActivity(inte);
@@ -82,8 +81,6 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Identificacion o contraseña incorrecta", Toast.LENGTH_LONG).show();
 
         }
-
-
 
     }
 
