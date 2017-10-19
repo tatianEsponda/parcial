@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                                                                                      ingresada nos vamos al atributo Contraseña y la guardamos en contrBD para luego
                                                                                         compararla con la que se ingreso que seta en Ide*/
 
-                tipo=dataSnapshot.child("Tipo").getValue().toString();
+               // tipo=dataSnapshot.child("Tipo").getValue().toString();
            }
 
            @Override
@@ -82,6 +82,8 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Identificacion o contraseña incorrecta", Toast.LENGTH_LONG).show();
 
         }
+
+
 
     }
 
