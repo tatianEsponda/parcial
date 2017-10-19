@@ -18,7 +18,7 @@ public class ActivityListaad extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_lista);
+        setContentView(R.layout.activity_listaad);
         Nomb=(EditText)findViewById(R.id.ediNomb);
         ape=(EditText)findViewById(R.id.ediape);
         iden=(EditText) findViewById(R.id.edidato);// obtenemos lo que hay en texto identificacion
@@ -28,15 +28,15 @@ public class ActivityListaad extends AppCompatActivity {
 
 
     public void leer(View b){
-       String dato= iden.getText().toString().trim();  // lo que tenemos en  iden lo guardamos en dato es decir la identificacino
+        String dato= iden.getText().toString().trim();  // lo que tenemos en  iden lo guardamos en dato es decir la identificacino
         FirebaseDatabase data =FirebaseDatabase.getInstance();
         DatabaseReference myRef=data.getReference("Usuario").child(dato); //-Nos vamos a la referencia  usuario y la identificacion que  ingresamos
 
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) { // con ondata se muestra el resultado en casa de que es haga un cambio el automatimante nos lo envia modificado
-             Nomb.setText(dataSnapshot.child("Nombre").getValue().toString()); // en el texto nombre agregamos lo que haya en nombre de la identificacion ingresada
-             ape.setText(dataSnapshot.child("Apellido").getValue().toString());// igual pero con el apellido
+                Nomb.setText(dataSnapshot.child("Nombre").getValue().toString()); // en el texto nombre agregamos lo que haya en nombre de la identificacion ingresada
+                ape.setText(dataSnapshot.child("Apellido").getValue().toString());// igual pero con el apellido
 
             }
 

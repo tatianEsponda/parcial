@@ -23,6 +23,9 @@ public class MainActivity extends AppCompatActivity {
     EditText identi, contraseña;
 
     String Ide,contr,contrBD="";
+    String tip="";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
                 contrBD = dataSnapshot.child("Contraseña").getValue().toString();/*una vez estamos dentro de los atributos del usuario con la identificacion
                                                                                         ingresada nos vamos al atributo Contraseña y la guardamos en contrBD para luego
                                                                                         compararla con la que se ingreso que seta en Ide*/
+                tip=dataSnapshot.child("Tipo").getValue().toString();
 
            }
 
@@ -74,13 +78,28 @@ public class MainActivity extends AppCompatActivity {
            }
        });
         if (contr.matches(contrBD)){
-            Toast.makeText(this, "Si es igual", Toast.LENGTH_LONG).show();
-            Intent inte = new Intent(MainActivity.this,ActivityLista.class);    // llamo a la activity  lista
-            startActivity(inte);
-        }else{
-            Toast.makeText(this, "Identificacion o contraseña incorrecta", Toast.LENGTH_LONG).show();
+            switch (tip){
+                case "Administrador":
+
+                    Toast.makeText(this, "Si es igual administrador", Toast.LENGTH_LONG).show();
+                    Intent inte = new Intent(MainActivity.this,ActivityListaad.class);    // llamo a la activity  lista administrador
+                    startActivity(inte);
+
+                    break;
+                case "Estudiante":
+
+                    Toast.makeText(this, "Si es igual", Toast.LENGTH_LONG).show();
+                    Intent ite = new Intent(MainActivity.this,ActivityLista.class);    // llamo a la activity  lista estudiante
+                    startActivity(ite);
+
+                    break;
+            }
+
+        }else {
+            Toast.makeText(this, "Identificacion o contraseña incorrecta", Toast.LENGTH_SHORT).show();
 
         }
+
 
     }
 

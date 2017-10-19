@@ -45,10 +45,11 @@
             android:inputType="textPersonName" />
 
         <Button
-            android:id="@+id/btDetalles"
+            android:id="@+id/button3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Mas detalles" />
+            android:text="Volver" />
+
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
