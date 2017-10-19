@@ -47,18 +47,41 @@
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/ediemail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="email"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/edinota"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Calificar"
         android:inputType="textPersonName" />
 
-    <Button
-        android:id="@+id/button2"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Volver" />
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:onClick="calificacion"
+            android:text="Calificar" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Volver" />
+
+    </LinearLayout>
 
 </LinearLayout>
 

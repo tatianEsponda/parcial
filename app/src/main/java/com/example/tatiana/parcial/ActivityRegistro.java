@@ -22,6 +22,7 @@ public class ActivityRegistro extends AppCompatActivity {
     DatabaseReference myRef = database.getReference();
 
     EditText Ident,nomb,apell,email,contr;
+    String not="0";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,14 +56,18 @@ public class ActivityRegistro extends AppCompatActivity {
         String ap=apell.getText().toString().trim();
         String ema=email.getText().toString().trim();
         String contra=contr.getText().toString().trim();
-        Usuario usu = new Usuario(id,nom,ap,ema,ban,contra);
+        Usuario usu = new Usuario(id,nom,ap,ema,ban,contra,not);
         if(id.matches("")||nom.matches("")||ap.matches("")||ema.matches("")||contra.matches("")){
             Toast.makeText(this,"Todos los campos son obligatorios",Toast.LENGTH_LONG).show();
         }else{
             myRef.child("Usuario").child(id).setValue(usu);
         }
 
-
+        Ident.setText("");
+        nomb.setText("");
+        apell.setText("");
+        email.setText("");
+        contr.setText("");
     }
 
     public void LeerFirebase(View g){
