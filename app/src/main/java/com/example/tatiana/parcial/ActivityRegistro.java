@@ -15,11 +15,17 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.Map;
 
+import static com.example.tatiana.parcial.R.id.Textnombre;
+
 public class ActivityRegistro extends AppCompatActivity {
     RadioButton si,no;
     String ban= "Estudiante";
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference myRef = database.getReference();
+    DatabaseReference usuario = FirebaseDatabase.getInstance().getReference().child("Usuario");
+    private DatabaseReference dbUsuario;// 3 forma
+    private ValueEventListener eventListener;
+    //dbUsuario=FirebaseDatabase..getInstance().getReference().child("Usuario");
 
     EditText Ident,nomb,apell,email,contr;
     String not="0";
@@ -30,7 +36,7 @@ public class ActivityRegistro extends AppCompatActivity {
         si = (RadioButton)findViewById(R.id.RadioSi);
         no = (RadioButton)findViewById(R.id.RadioNo);
         Ident=(EditText)findViewById(R.id.Textiden);
-        nomb=(EditText)findViewById(R.id.Textnombre);
+        nomb=(EditText)findViewById(Textnombre);
         apell=(EditText)findViewById(R.id.TextApellido);
         email=(EditText)findViewById(R.id.TextEmail);
         contr=(EditText)findViewById(R.id.Textcontra);
@@ -87,7 +93,49 @@ public class ActivityRegistro extends AppCompatActivity {
                 Ident.setText(""+error.toException());
             }
         });
-
-
     }
+
+    //Forma 2 de hacer el json
+    public void leer(View d){
+
+        DatabaseReference usuario = FirebaseDatabase.getInstance().getReference().child("Usuario").child("9");
+        usuario.addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                //String nombre= (String) dataSnapshot.getValue();
+                Ident.setText(dataSnapshot.child("Nombre").getValue().toString());
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                Ident.setText(""+error.toException());
+            }
+
+        });
+        Toast.makeText(this,"entro",Toast.LENGTH_LONG).show();
+    }
+
+/*  forma 1 de hacer el json
+    public void leer(){
+
+        DatabaseReference usuario = FirebaseDatabase.getInstance().getReference().child("Usuario").child("nombre");
+        usuario.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String nombre= (String) dataSnapshot.getValue();
+                nomb.setText(nombre);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                {
+                    nomb.setText(""+error.toException());
+                }
+            });
+        }
+
+    }*/
 }
+
