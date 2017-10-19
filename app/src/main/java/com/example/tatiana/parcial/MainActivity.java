@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     DatabaseReference myRef = database.getReference();
     EditText identi, contraseña;
 
-    String Ide,contr,contrBD="";
+    String Ide,contr,contrBD=" ";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,9 +66,6 @@ public class MainActivity extends AppCompatActivity {
                                                                                         ingresada nos vamos al atributo Contraseña y la guardamos en contrBD para luego
                                                                                         compararla con la que se ingreso que seta en Ide*/
 
-
-
-
            }
 
            @Override
@@ -76,10 +73,10 @@ public class MainActivity extends AppCompatActivity {
                identi.setText(""+error.toException());
            }
        });
-        if (contr.equalsIgnoreCase(contrBD)){   // no he podido comparar estos dos String para asi ir a LISTAR
+        if (contr.matches(contrBD)){
             Toast.makeText(this, "Si es igual", Toast.LENGTH_LONG).show();
-            Intent inte = new Intent(MainActivity.this,ActivityLista.class);    //si quieren probar LISTAR entonces corten y peguen  estas dos lineas
-            startActivity(inte);                                                // en el else
+            Intent inte = new Intent(MainActivity.this,ActivityLista.class);    // llamo a la activity  lista
+            startActivity(inte);
         }else{
             Toast.makeText(this, "Identificacion o contraseña incorrecta", Toast.LENGTH_LONG).show();
 
