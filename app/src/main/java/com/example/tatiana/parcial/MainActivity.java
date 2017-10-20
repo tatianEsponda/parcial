@@ -81,14 +81,14 @@ public class MainActivity extends AppCompatActivity {
         if (contr.matches(contrBD)){
             switch (tip){
                 case "Administrador":
-
+                    tip="";
                     Toast.makeText(this, "Si es igual administrador", Toast.LENGTH_LONG).show();
                     Intent inte = new Intent(MainActivity.this,ActivityListaad.class);    // llamo a la activity  lista administrador
                     startActivity(inte);
 
                     break;
                 case "Estudiante":
-
+                    tip="";
                     Toast.makeText(this, "Si es igual", Toast.LENGTH_LONG).show();
                     Intent ite = new Intent(MainActivity.this,ActivityLista.class);    // llamo a la activity  lista estudiante
                     startActivity(ite);
