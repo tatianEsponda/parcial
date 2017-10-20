@@ -70,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
                                                                                         compararla con la que se ingreso que seta en Ide*/
                 tip=dataSnapshot.child("Tipo").getValue().toString();
 
+
            }
 
            @Override

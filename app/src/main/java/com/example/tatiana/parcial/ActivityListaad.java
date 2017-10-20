@@ -1,8 +1,10 @@
 package com.example.tatiana.parcial;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import com.google.firebase.database.DataSnapshot;
@@ -14,6 +16,7 @@ import com.google.firebase.database.ValueEventListener;
 public class ActivityListaad extends AppCompatActivity {
     EditText Nomb,ape,ema,iden,nota;
      String dato="";
+    Button volver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +26,16 @@ public class ActivityListaad extends AppCompatActivity {
         ape=(EditText)findViewById(R.id.ediape);
         ema=(EditText)findViewById(R.id.ediemail);
         nota=(EditText) findViewById(R.id.edinota); // obtenemos la nota
+
+        volver=(Button)findViewById(R.id.button2) ;
+
+        volver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent volver = new Intent(ActivityListaad.this,MainActivity.class);
+                startActivity(volver);
+            }
+        });
 
         iden=(EditText) findViewById(R.id.edidato);// obtenemos lo que hay en texto identificacion
 

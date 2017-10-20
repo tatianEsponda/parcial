@@ -1,8 +1,10 @@
 package com.example.tatiana.parcial;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
@@ -29,6 +31,7 @@ public class ActivityRegistro extends AppCompatActivity {
 
     EditText Ident,nomb,apell,email,contr;
     String not="0";
+    Button volver;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +55,15 @@ public class ActivityRegistro extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                  ban="Estudiandte";
+            }
+        });
+        volver = (Button) findViewById(R.id.buttonvolv);
+
+        volver.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent volver= new Intent(ActivityRegistro.this,MainActivity.class);
+                startActivity(volver);
             }
         });
 
@@ -95,8 +107,9 @@ public class ActivityRegistro extends AppCompatActivity {
         });
     }
 
+
     //Forma 2 de hacer el json
-    public void leer(View d){
+   /* public void leer(View d){
 
         DatabaseReference usuario = FirebaseDatabase.getInstance().getReference().child("Usuario").child("9");
         usuario.addValueEventListener(new ValueEventListener() {
@@ -115,7 +128,7 @@ public class ActivityRegistro extends AppCompatActivity {
 
         });
         Toast.makeText(this,"entro",Toast.LENGTH_LONG).show();
-    }
+    }*/
 
 /*  forma 1 de hacer el json
     public void leer(){

@@ -1,8 +1,10 @@
 package com.example.tatiana.parcial;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import com.google.firebase.database.DataSnapshot;
@@ -14,6 +16,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class ActivityLista extends AppCompatActivity {
     EditText Nomb,ape,iden;
+    Button volver;
 
 
     @Override
@@ -23,10 +26,25 @@ public class ActivityLista extends AppCompatActivity {
         Nomb=(EditText)findViewById(R.id.ediNomb);
         ape=(EditText)findViewById(R.id.ediape);
         iden=(EditText) findViewById(R.id.edidato);// obtenemos lo que hay en texto identificacion
+        volver = (Button) findViewById(R.id.button2);
+
+
+        volver.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(ActivityLista.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
 
+    public void volver(View s){
+        Intent inte = new Intent(ActivityLista.this,MainActivity.class);
+        startActivity(inte);
+    }
 
     public void leer(View b){
        String dato= iden.getText().toString().trim();  // lo que tenemos en  iden lo guardamos en dato es decir la identificacino
